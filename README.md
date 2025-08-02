@@ -1,99 +1,35 @@
 # Customizable Document Tracking System
 
-## 1. System Overview
+## Overview
 
-The Document Tracking System is a microservices-based platform designed for organizations to flexibly manage, track, and customize document workflows. The system enables users to define custom pipelines for document movement, organize files by organizational structure, and ensure secure handover and verification using web/mobile interfaces (QR code or hash-code scanning). The architecture leverages **Spring Boot microservices**, **PostgreSQL** (SQL) for core transactional and relational data, and **MongoDB** (NoSQL) for flexible, evolving workflow and metadata storage.
+The Customizable Document Tracking System is a modern, microservices-based platform designed for organizations to manage, track, and customize document workflows efficiently and securely. Built with Spring Boot and leveraging **PostgreSQL** as the sole database, this system empowers organizations to define flexible, multi-step pipelines for document movement, organize files according to their unique structures, and ensure secure, auditable handovers—including mobile/web-based verification through QR codes or hash-codes.
 
----
+## Key Features
 
-## 2. Functional Requirements
+- **Customizable Pipelines:** Define and manage multi-step, organization-specific document workflows.
+- **Scalable Microservices Architecture:** Modular design for independent deployment and seamless scaling.
+- **Robust User Management:** Role-based access control for administrators, staff, and external verifiers.
+- **Secure Handover & Verification:** Generate QR codes or unique hashes for document transfer and verification.
+- **Comprehensive Audit Logs:** Track every action, handover, and system event for transparency and accountability.
+- **Advanced File Organization:** Group files by departments, categories, and subcategories for easy navigation.
+- **Interactive Dashboard:** View recent activity, system metrics, and quick-access actions right after login.
+- **Flexible Metadata:** Support for storing rich and evolving information about documents.
+- **Notifications:** Real-time alerts and updates for pending actions, document movements, and workflow completions.
+- **API-First Design:** RESTful APIs for easy integration with mobile apps, third-party applications, or external portals.
 
-- **User Authentication & Authorization**
-  - Secure login and role-based access control (admin, manager, staff, external verifier).
+## Technology Stack
 
-- **Dashboard**
-  - Overview of recent activity, key metrics (documents in transit, completed, pending), and shortcuts to frequent actions.
+- **Backend:** Spring Boot (Java)
+- **Database:** PostgreSQL (single SQL database)
+- **Architecture:** Microservices
+- **APIs:** RESTful, secured endpoints
+- **Security:** Strong authentication and authorization, audit trails, and encrypted data storage
+- **DevOps:** Docker-based containerization, CI/CD pipelines, and Kubernetes compatibility
 
-- **File Organization**
-  - Manage hierarchical structures: departments, categories, subcategories (SQL).
-  - Assign files to specific organizational units.
+## License
 
-- **File Saving & Metadata Management**
-  - Upload and store files with metadata (title, description, tags, owner, etc.).
-  - Associate files with pipelines and organizational units.
-
-- **Pipeline Builder**
-  - Visual or form-based interface to define custom document workflows (steps, rules, conditions).
-  - Save and reuse pipeline templates (MongoDB).
-
-- **Document Handover & Verification**
-  - Generate QR codes or hash-codes for secure handover.
-  - Mobile/web portal for scanning codes and verifying file transfers.
-  - Audit trail for each handover event.
-
-- **System Reuse**
-  - Load, clone, or modify previously saved file tracking systems or pipeline templates.
-
-- **Search & Filtering**
-  - Advanced search and filtering by metadata, status, department, date, etc.
-
-- **Notifications**
-  - Real-time alerts for pending actions, handovers, or workflow completions (email, SMS, in-app).
-
-- **Settings & Customization**
-  - User profile management, system preferences, notification settings.
-  - Organization-wide configuration options.
-
-- **Audit Logging**
-  - Complete history of document actions, user activities, and system changes.
-
-- **Bulk Operations**
-  - Batch upload, move, or archive files.
-
-- **Third-Party Integrations**
-  - Hooks for e-signature, cloud storage, or external workflow engines.
-
-- **Localization**
-  - Support for multiple languages and regional settings.
+This project is licensed under the MIT License. See [`LICENSE`](./LICENSE) for details.
 
 ---
 
-## 3. Non-Functional Requirements
-
-- **Security**
-  - Data encryption in transit and at rest.
-  - Strong authentication and authorization mechanisms.
-  - Audit logs and compliance with data protection standards.
-
-- **Scalability**
-  - Microservices architecture supports horizontal scaling.
-  - Database sharding/replication for high availability.
-
-- **Performance**
-  - Fast response times for file operations and dashboard metrics.
-  - Asynchronous processing for heavy tasks (e.g., file uploads, notifications).
-
-- **Reliability & Availability**
-  - Automated backups, failover mechanisms, and health checks.
-
-- **Maintainability**
-  - Modular codebase, clear documentation, and automated testing.
-
-- **Usability**
-  - Intuitive UI/UX for both web and mobile interfaces.
-  - Accessibility compliance (WCAG standards).
-
-- **Extensibility**
-  - API-first design for easy integration with third-party systems.
-  - Plugin support for custom workflow steps or document types.
-
-- **Monitoring & Logging**
-  - Centralized monitoring and logging for all services (e.g., Prometheus, ELK stack).
-
-- **DevOps Integration**
-  - CI/CD pipelines, containerization (Docker), and orchestration (Kubernetes).
-
----
-
-## 4. Use Case Diagram
-
+**Empowering organizations to take control of their document lifecycles, with security, scalability, and flexibility at the core.**
