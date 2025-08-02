@@ -6,18 +6,18 @@
 
 ### The Reality We're Solving
 
-In countless organizations worldwide—particularly in traditional government offices and bureaucratic institutions—a familiar struggle persists: **physical documents crawling through manual processes**, creating bottlenecks that affect millions of people daily.
+In countless organizations worldwide, particularly in traditional government offices and bureaucratic institutions, a familiar struggle persists: **physical documents crawling through manual processes**, creating bottlenecks that affect millions of people daily.
 
 **The Daily Struggle:**
 
 * **Endless Waiting:** Citizens spend hours in queues, often making multiple visits to government offices for a single service
 * **Lost in Transit:** Documents frequently get misplaced, damaged, or "stuck" on someone's desk for days or weeks
-* **No Visibility:** Nobody knows where a document is at any given time—not the citizen, not the staff, sometimes not even the department
+* **No Visibility:** Nobody knows where a document is at any given time; not the citizen, not the staff, sometimes not even the department
 * **Manual Chaos:** Physical files move from table to table, department to department, with no systematic tracking or accountability
 * **Storage Crisis:** Organizations desperately scramble to find physical space to store growing mountains of paperwork
 * **Time Drain:** What should take hours takes days; what should take days takes weeks
 
-**Real Impact:** Research shows that manual document processing causes 40-60% of time to be spent just waiting for the next step. Processing times vary dramatically—from 6 days in efficient systems to 74 days in severely constrained environments. When organizations digitize these processes, waiting times drop by 16-96 minutes on average.
+**Real Impact:** Research shows that manual document processing causes 40-60% of time to be spent just waiting for the next step. Processing times vary dramatically, from 6 days in efficient systems to 74 days in severely constrained environments. When organizations digitize these processes, waiting times drop by 16-96 minutes on average.
 
 ## Our Solution
 
