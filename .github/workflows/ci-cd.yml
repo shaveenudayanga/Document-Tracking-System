@@ -72,4 +72,3 @@ jobs:
       - name: Deploy to Kind
         run: |
           kubectl apply -f backend/user-service/k8s/
-          kubectl apply -f backend/user-service/k8s/hpa.yaml
