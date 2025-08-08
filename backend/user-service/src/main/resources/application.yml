@@ -39,7 +39,7 @@ spring:
     activate:
       on-profile: prod
   datasource:
-    url: jdbc:postgresql://postgres:5432/docutrace_users
+    url: jdbc:postgresql://db:5432/docutrace_users
     username: ${POSTGRES_USER:postgres}
     password: ${POSTGRES_PASSWORD:postgres}
   jpa:
