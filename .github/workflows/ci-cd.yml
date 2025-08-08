@@ -53,19 +53,26 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Set up Kind cluster
+        uses: helm/kind-action@v1.9.0
+
       - name: Set up kubectl
         uses: azure/setup-kubectl@v3
         with:
           version: 'latest'
 
-      - name: Set up Kubeconfig
-        run: |
-          echo "${{ secrets.KUBE_CONFIG }}" | base64 -d > $HOME/.kube/config
-
       - name: Update image tag in k8s manifests
         run: |
-          sed -i "s|image: .*/user-service:.*|image: ${{ secrets.DOCKER_USERNAME }}/user-service:${{ github.sha }}|g" backend/user-service/k8s/deployment.yaml
+          sed -i "s|image: .*/user-service:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/user-service:${{ github.sha }}|g" backend/user-service/k8s/deployment.yaml
 
-      - name: Deploy to Kubernetes
+      - name: Load Docker image into Kind
+        run: |
+          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/user-service:${{ github.sha }}
+          kind load docker-image ${{ secrets.DOCKERHUB_USERNAME }}/user-service:${{ github.sha }}
+
+      - name: Deploy to Kind
         run: |
           kubectl apply -f backend/user-service/k8s/
