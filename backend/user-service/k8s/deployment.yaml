@@ -16,7 +16,8 @@ spec:
     spec:
       containers:
         - name: user-service
-          image: your-docker-username/user-service:latest # replaced by CI
+          # NOTE: The image tag is automatically replaced by the CI/CD pipeline during deployment.
+          image: shaveenudayanga/user-service:latest
           ports:
             - containerPort: 8080
           env:
