@@ -59,6 +59,14 @@ jobs:
       - name: Set up Kind cluster
         uses: helm/kind-action@v1.9.0
 
+      - name: Debug Kind cluster context
+        run: |
+          echo 'KUBECONFIG:'
+          echo $KUBECONFIG
+          kubectl config current-context || true
+          kubectl cluster-info || true
+          kubectl get nodes || true
+
       - name: Set up kubectl
         uses: azure/setup-kubectl@v3
         with:
