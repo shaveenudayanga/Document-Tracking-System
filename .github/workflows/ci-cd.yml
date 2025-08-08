@@ -97,6 +97,6 @@ jobs:
       
       - name: Run Postman collection
         run: |
-          newman run backend/user-service/postman_collection.json -e backend/user-service/postman_environment.json --delay-request 100 --timeout-request 10000 --insecure --bail --reporters cli
+          newman run backend/user-service/postman_collection.json -e backend/user-service/postman_environment.json --delay-request 100 --timeout-request 10000 --insecure --bail --reporters clitman_collection.json -e backend/user-service/postman_environment.json --delay-request 100 --timeout-request 10000 --insecure --bail --reporters cli
         env:
           API_BASE_URL: http://localhost:8080
