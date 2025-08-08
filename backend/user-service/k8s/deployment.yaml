@@ -24,15 +24,13 @@ spec:
             - name: SPRING_PROFILES_ACTIVE
               value: "prod"
             - name: POSTGRES_USER
-              valueFrom:
-                secretKeyRef:
-                  name: user-service-secret
-                  key: POSTGRES_USER
+              value: "user"
             - name: POSTGRES_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: user-service-secret
-                  key: POSTGRES_PASSWORD
+              value: "password"
+            - name: POSTGRES_DB
+              value: "userdb"
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://postgres:5432/userdb"
             - name: JWT_SECRET
               valueFrom:
                 secretKeyRef:
