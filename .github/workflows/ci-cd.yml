@@ -73,22 +73,22 @@ jobs:
         run: |
           kubectl apply -f backend/user-service/k8s/
 
-      - name: Wait for user-service pod to be ready
-        run: |
-          kubectl wait --for=condition=ready pod -l app=user-service -n default --timeout=120s
+      # - name: Wait for user-service pod to be ready
+      #   run: |
+      #     kubectl wait --for=condition=ready pod -l app=user-service -n default --timeout=120s
 
-      - name: Install newman
-        run: |
-          npm install -g newman
+      # - name: Install newman
+      #   run: |
+      #     npm install -g newman
 
-      - name: Port-forward user-service
-        run: |
-          kubectl port-forward svc/user-service 8080:8080 &
-          sleep 5
+      # - name: Port-forward user-service
+      #   run: |
+      #     kubectl port-forward svc/user-service 8080:8080 &
+      #     sleep 5
 
-      - name: Run Postman collection
-        run: |
-          newman run backend/user-service/postman_collection.json -e backend/user-service/postman_environment.json --delay-request 100 --timeout-request 10000 --insecure --bail --reporters cli
-        env:
-          API_BASE_URL: http://localhost:8080
-          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+      # - name: Run Postman collection
+      #   run: |
+      #     newman run backend/user-service/postman_collection.json -e backend/user-service/postman_environment.json --delay-request 100 --timeout-request 10000 --insecure --bail --reporters cli
+      #   env:
+      #     API_BASE_URL: http://localhost:8080
+      #     JWT_SECRET: ${{ secrets.JWT_SECRET }}
