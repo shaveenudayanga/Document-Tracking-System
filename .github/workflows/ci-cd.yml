@@ -74,8 +74,6 @@ jobs:
 
       - name: Deploy to Kind
         run: |
-          kubectl apply -f backend/user-service/k8s/postgres.yaml
-          sleep 10
           kubectl apply -f backend/user-service/k8s/
       
       - name: Wait for user-service pod to be ready
