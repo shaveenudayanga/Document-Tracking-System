@@ -1,3 +1,26 @@
+# Ignore environment and secret files
+.env
+k8s/secret.yaml
+# Ignore CI/CD workflow artifacts
+.github/
+# Ignore IDE/editor/project files
+.vscode/
+.idea/
+*.iml
+# Ignore OS files
+.DS_Store
+Thumbs.db
+# Ignore build output
+target/
+# Ignore environment and secret files
+.env
+# Ignore IDE/editor/project files
+.vscode/
+.idea/
+*.iml
+# Ignore OS files
+.DS_Store
+Thumbs.db
 HELP.md
 target/
 .mvn/wrapper/maven-wrapper.jar
