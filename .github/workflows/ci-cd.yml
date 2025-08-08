@@ -99,4 +99,4 @@ jobs:
         run: |
           newman run backend/user-service/postman_collection.json -e backend/user-service/postman_environment.json --delay-request 100 --timeout-request 10000 --insecure --bail --reporters clitman_collection.json -e backend/user-service/postman_environment.json --delay-request 100 --timeout-request 10000 --insecure --bail --reporters cli
         env:
-          API_BASE_URL: http://localhost:8080
+          API_BASE_URL: http://127.0.0.1:8080
