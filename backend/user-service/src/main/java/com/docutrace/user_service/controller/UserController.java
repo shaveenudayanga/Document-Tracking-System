@@ -28,9 +28,9 @@ public class UserController {
 	// Authentication & Registration
 
 	@PostMapping("/auth/register")
-	@ResponseStatus(HttpStatus.CREATED)
-	public UserResponse register(@Valid @RequestBody UserRegistrationRequest request) {
-		return userService.register(request);
+	public org.springframework.http.ResponseEntity<UserResponse> register(@Valid @RequestBody UserRegistrationRequest request) {
+		UserResponse response = userService.register(request);
+		return org.springframework.http.ResponseEntity.status(org.springframework.http.HttpStatus.CREATED).body(response);
 	}
 
 	@PostMapping("/auth/login")
