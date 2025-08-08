@@ -76,12 +76,6 @@ jobs:
         run: |
           sed -i "s|image: .*/user-service:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/user-service:${{ github.sha }}|g" backend/user-service/k8s/deployment.yaml
 
-      - name: Create user-service-secret
-        run: |
-          kubectl create secret generic user-service-secret \
-            --from-literal=POSTGRES_USER=${{ secrets.POSTGRES_USER }} \
-            --from-literal=POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} \
-            --from-literal=JWT_SECRET=${{ secrets.JWT_SECRET }}
 
       - name: Deploy to Kind
         run: |
