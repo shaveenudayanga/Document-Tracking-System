@@ -56,6 +56,11 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: 'latest'
+
       - name: Set up Kind cluster
         uses: helm/kind-action@v1.9.0
 
@@ -66,11 +71,6 @@ jobs:
           kubectl config current-context || true
           kubectl cluster-info || true
           kubectl get nodes || true
-
-      - name: Set up kubectl
-        uses: azure/setup-kubectl@v3
-        with:
-          version: 'latest'
 
       - name: Update image tag in k8s manifests
         run: |
