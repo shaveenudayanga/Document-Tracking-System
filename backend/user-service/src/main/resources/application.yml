@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: user-service
+  datasource:
+  url: jdbc:postgresql://postgres:5432/docutrace_users
+  username: ${POSTGRES_USER:postgres}
+  password: ${POSTGRES_PASSWORD:postgres}
+  driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    com.docutrace.user_service: DEBUG
+
+security:
+  jwt:
+    # 256-bit secret recommended; override via ENV VAR in production or .env for local
+    secret: ${JWT_SECRET:change-me-super-secret-jwt-key-change-me-change-me-please-32+}
+    expiration-access-minutes: ${JWT_ACCESS_MINUTES:30}
+    expiration-refresh-days: ${JWT_REFRESH_DAYS:7}
+
+---
+# Production profile (used inside docker / k8s)
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: jdbc:postgresql://db:5432/docutrace_users
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:postgres}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+logging:
+  level:
+    root: INFO
+security:
+  jwt:
+    secret: ${JWT_SECRET:prod-override-secret}
+    expiration-access-minutes: ${JWT_ACCESS_MINUTES:30}
+    expiration-refresh-days: ${JWT_REFRESH_DAYS:7}

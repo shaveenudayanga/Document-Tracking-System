@@ -1,0 +1,13 @@
+.git
+.gitignore
+.env
+.vscode/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+node_modules/
+target/
+
+k8s/
+.github/
