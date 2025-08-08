@@ -93,7 +93,7 @@ jobs:
       - name: Port-forward user-service
         run: |
           kubectl port-forward svc/user-service 8080:8080 &
-          sleep 5
+          sleep 10
       
       - name: Run Postman collection
         run: |
