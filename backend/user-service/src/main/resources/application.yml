@@ -2,10 +2,10 @@ spring:
   application:
     name: user-service
   datasource:
-    url: jdbc:postgresql://postgres:5432/docutrace_users
-    username: postgres
-    password: postgres
-    driver-class-name: org.postgresql.Driver
+  url: jdbc:postgresql://postgres:5432/docutrace_users
+  username: ${POSTGRES_USER:postgres}
+  password: ${POSTGRES_PASSWORD:postgres}
+  driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
       ddl-auto: update
@@ -27,10 +27,10 @@ logging:
 
 security:
   jwt:
-    # 256-bit secret recommended; placeholder value here - override via ENV VAR in production.
-    secret: "change-me-super-secret-jwt-key-change-me-change-me-please-32+"
-    expiration-access-minutes: 30
-    expiration-refresh-days: 7
+    # 256-bit secret recommended; override via ENV VAR in production or .env for local
+    secret: ${JWT_SECRET:change-me-super-secret-jwt-key-change-me-change-me-please-32+}
+    expiration-access-minutes: ${JWT_ACCESS_MINUTES:30}
+    expiration-refresh-days: ${JWT_REFRESH_DAYS:7}
 
 ---
 # Production profile (used inside docker / k8s)
