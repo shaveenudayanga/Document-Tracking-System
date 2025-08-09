@@ -75,6 +75,14 @@ jobs:
       - name: Deploy to Kind
         run: |
           kubectl apply -f backend/user-service/k8s/
+      - name: Wait for postgres pod to be ready
+        run: |
+          kubectl wait --for=condition=ready pod -l app=postgres -n default --timeout=120s || {
+            echo 'Postgres pod not ready:';
+            kubectl get pods -l app=postgres -n default;
+            kubectl describe pod -l app=postgres -n default | sed -n '1,200p';
+            exit 1;
+          }
       
       - name: Wait for user-service pod to be ready
         run: |
@@ -101,8 +109,8 @@ jobs:
         env:
           API_BASE_URL: http://127.0.0.1:8080
 
-      - name: Show user-service pod logs
-        if: always()
+      - name: Show user-service pod logs on failure
+        if: failure()
         run: |
-          echo '--- user-service pod logs ---'
+          echo '--- user-service pod logs (failure) ---'
           kubectl logs $(kubectl get pods -l app=user-service -n default -o jsonpath='{.items[0].metadata.name}') -n default || echo 'Could not get logs.'

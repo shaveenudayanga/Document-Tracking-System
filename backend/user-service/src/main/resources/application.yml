@@ -2,16 +2,13 @@ spring:
   application:
     name: user-service
   datasource:
-  url: jdbc:postgresql://postgres:5432/docutrace_users
-  username: ${POSTGRES_USER:postgres}
-  password: ${POSTGRES_PASSWORD:postgres}
-  driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://postgres:5432/docutrace_users
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
       ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: false
   jackson:
     serialization:
@@ -23,7 +20,6 @@ server:
 logging:
   level:
     root: INFO
-    com.docutrace.user_service: DEBUG
 
 security:
   jwt:
