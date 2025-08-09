@@ -36,13 +36,23 @@ spec:
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
-                  name: db-secret
+                  name: user-service-secret
                   key: POSTGRES_USER
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: db-secret
+                  name: user-service-secret
                   key: POSTGRES_PASSWORD
+          livenessProbe:
+            exec:
+              command: ["/bin/sh","-c","pg_isready -U $POSTGRES_USER"]
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          readinessProbe:
+            exec:
+              command: ["/bin/sh","-c","pg_isready -U $POSTGRES_USER"]
+            initialDelaySeconds: 5
+            periodSeconds: 5
           volumeMounts:
             - name: postgres-data
               mountPath: /var/lib/postgresql/data
