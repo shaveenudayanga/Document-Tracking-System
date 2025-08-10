@@ -1,0 +1,15 @@
+.upload-form input[type="text"],
+.upload-form input[type="file"],
+.upload-form input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+  margin-bottom: 12px;
+}
+.upload-form label {
+  font-size: 13px;
+  color: #333;
+  display: block;
+  margin-bottom: 6px;
+}
