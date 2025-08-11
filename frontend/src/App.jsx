@@ -1,11 +1,11 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Login from "./pages/Auth/Login";
-import Dashboard from "./pages/Dashboard/Dashboard";
-import DocumentList from "./pages/Documents/DocumentList";
-import DocumentDetail from "./pages/Documents/DocumentDetail";
-import UploadDocument from "./pages/Documents/UploadDocument";
-import HandoverQueue from "./pages/Handover/HandoverQueue";
+import Login from "./pages/Auth/Login.jsx";
+import Dashboard from "./pages/Dashboard/Dashboard.jsx";
+import DocumentList from "./pages/Documents/DocumentList.js";
+import DocumentDetail from "./pages/Documents/DocumentDetail.js";
+import UploadDocument from "./pages/Documents/UploadDocument.js";
+import HandoverQueue from "./HandoverQueue.jsx";
 import { useAuth } from "./context/AuthContext";
 import "./App.css";
 
