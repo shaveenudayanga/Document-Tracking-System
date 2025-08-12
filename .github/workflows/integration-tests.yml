@@ -1,0 +1,67 @@
+name: Integration Tests
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["user-service-ci.yml"]
+    types:
+      - completed
+
+jobs:
+  integration-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15  # Prevent hanging workflows
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Kind cluster
+        uses: helm/kind-action@v1.9.0
+        with:
+          wait: 120s  # Explicitly wait for cluster readiness
+
+      - name: Deploy all services
+        run: |
+          echo "Deploying Kubernetes services..."
+          for service in backend/*/; do
+            if [ -d "$service/k8s" ]; then
+              echo "Applying manifests from $service/k8s/"
+              kubectl apply -f "$service/k8s/" --recursive
+            fi
+          done
+
+      - name: Wait for pods to be ready
+        run: |
+          echo "Waiting for pods to become ready..."
+          kubectl wait --for=condition=ready pod --all --timeout=180s
+          kubectl get pods -A  # Log pod status for debugging
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'npm'
+
+      - name: Install Newman for API testing
+        run: npm install -g newman
+
+      - name: Run integration tests
+        id: integration-tests
+        run: |
+          echo "Running integration tests with Newman..."
+          newman run tests/integration_collection.json \
+            -e tests/integration_environment.json \
+            --delay-request 100 \
+            --timeout-request 20000 \
+            --bail \
+            --reporters cli,json \
+            --reporter-json-export results/integration-tests.json
+
+      - name: Upload test results
+        if: always()  # Run even if tests fail
+        uses: actions/upload-artifact@v3
+        with:
+          name: integration-test-results
+          path: results/*.json
+          retention-days: 7

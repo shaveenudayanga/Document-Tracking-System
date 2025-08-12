@@ -72,6 +72,11 @@ This project is licensed under the MIT License. See [`LICENSE`](./LICENSE) for d
 
 The `user-service` microservice handles registration, authentication (JWT + refresh tokens), and administrative user management.
 
+Note on IDs and relationships:
+- `user-service` uses UUID as the canonical user identifier and owns its database schema.
+- Other services should store user references as UUID strings and must not create cross-service database foreign keys.
+- Cross-service integrity is enforced via APIs/events, not DB-level FKs. See docs/adr/0001-user-ids-and-cross-service-references.md.
+
 ### Quick Start (Docker Compose)
 
 ```
