@@ -1,67 +1,42 @@
-import React, { useState } from "react";
-import "./Login.css";
-import loginImage from "../../assets/login-widget.jpeg";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
+import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Login() {
-  const [email, setEmail] = useState("admin@docu.local");
-  const [password, setPassword] = useState("password");
-  const [error, setError] = useState("");
-  const { login } = useAuth();
-  const navigate = useNavigate();
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    const res = await login(email, password);
-    if (res.ok) {
-      navigate("/", { replace: true });
-    } else {
-      setError(res.message || "Login failed");
-    }
-  };
-
   return (
-    <div className="login-page">
-      <div className="login-card">
-        <div className="login-left">
-          <h2>Log In</h2>
-          <p className="muted">Welcome back! Please enter your details</p>
-          <form onSubmit={onSubmit} className="login-form">
-            <label>Email</label>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
+      <div className="w-full max-w-md">
+        <div className="bg-white p-8 rounded-2xl shadow">
+          <h2 className="text-2xl font-bold mb-4">Sign in to DocuTrace</h2>
+          <form className="space-y-4">
             <input
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              type="email"
+              className="w-full p-3 border rounded"
+              placeholder="Email or username"
             />
-            <label>Password</label>
             <input
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              className="w-full p-3 border rounded"
+              placeholder="Password"
               type="password"
             />
-            <a className="forgot" href="#">
-              forgot password ?
-            </a>
-            {error && <div className="error">{error}</div>}
-            <button className="primary" type="submit">
-              Log In
-            </button>
-          </form>
-          <div className="social-row">
-            <span className="or">Or Continue With</span>
-            <div className="social-buttons">
-              <button className="btn-outline">Google</button>
-              <button className="btn-outline">Facebook</button>
+            <div className="flex items-center justify-between text-sm">
+              <label className="flex items-center gap-2">
+                <input type="checkbox" /> Remember me
+              </label>
+              <Link className="text-sky-600" to="/forgot">
+                Forgot?
+              </Link>
             </div>
-            <p className="signup">
-              Don't have account? <a href="#">Sign up</a>
-            </p>
-          </div>
-        </div>
-        <div className="login-right">
-          <img src={loginImage} alt="visual" />
+            <div>
+              <button className="w-full py-3 rounded bg-sky-600 text-white font-medium">
+                Sign in
+              </button>
+            </div>
+          </form>
+          <p className="text-sm text-center mt-4">
+            New here?{" "}
+            <Link to="/onboarding" className="text-sky-600">
+              Get started
+            </Link>
+          </p>
         </div>
       </div>
     </div>

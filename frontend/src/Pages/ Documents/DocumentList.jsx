@@ -1,50 +1,35 @@
-import React, { useEffect, useState } from "react";
-import "./DocumentList.css";
-import { getDocuments } from "../../services/api";
+import React from "react";
+import PageShell from "../../components/PageShell";
 import { Link } from "react-router-dom";
 
 export default function DocumentList() {
-  const [docs, setDocs] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-      const d = await getDocuments();
-      setDocs(d);
-    })();
-  }, []);
-
   return (
-    <div className="container">
-      <div className="header">
-        <h3>Documents</h3>
-        <Link to="/upload" className="btn-outline">
-          Upload
-        </Link>
+    <PageShell title="Documents">
+      <div className="flex justify-end mb-4">
+        <button className="px-4 py-2 bg-sky-600 text-white rounded">
+          + New Document
+        </button>
       </div>
-      <div className="card">
-        <table className="doc-table">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Status</th>
-              <th>Owner</th>
-              <th>Updated</th>
-            </tr>
-          </thead>
-          <tbody>
-            {docs.map((d) => (
-              <tr key={d.id}>
-                <td>
-                  <Link to={`/documents/${d.id}`}>{d.title}</Link>
-                </td>
-                <td>{d.status}</td>
-                <td>{d.owner}</td>
-                <td>{d.updatedAt}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
+      <table className="w-full border">
+        <thead>
+          <tr className="bg-slate-100">
+            <th className="p-2 border">ID</th>
+            <th className="p-2 border">Title</th>
+            <th className="p-2 border">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td className="p-2 border">DOC-001</td>
+            <td className="p-2 border">
+              <Link to="/documents/1" className="text-sky-600">
+                Project Plan
+              </Link>
+            </td>
+            <td className="p-2 border">In Review</td>
+          </tr>
+        </tbody>
+      </table>
+    </PageShell>
   );
 }
