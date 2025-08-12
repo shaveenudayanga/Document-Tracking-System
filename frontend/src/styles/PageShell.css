@@ -1,40 +1,191 @@
-/* Container flexbox: sidebar + main content */
-.page-shell {
-  display: flex;
-  height: 100vh; /* Full viewport height */
-  background-color: #f8fafc; /* Light gray background */
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: #1e293b; /* Dark blue-gray text */
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --accent-color: #28a745;
+  --bg-color-light: #f8f9fa;
+  --text-color: #212529;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
-/* Main content area next to sidebar */
-.main-content {
-  flex-grow: 1;
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background-color: var(--bg-color-light);
+}
+
+.home-container {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  min-height: 100vh;
 }
 
-/* Header bar */
+/* Header Section */
 .header {
-  height: 60px;
-  background-color: #2563eb; /* Blue */
-  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 5%;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo img {
+  height: 40px; /* Adjust as needed */
+}
+
+.nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--secondary-color);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+}
+
+.header-actions {
   display: flex;
   align-items: center;
-  padding: 0 1.5rem;
-  box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
-  font-size: 1.25rem;
-  font-weight: 600;
-  user-select: none;
+  gap: 1.5rem;
 }
 
-/* Content area below header */
-.content-area {
-  padding: 1.5rem;
-  background-color: white;
-  height: calc(100vh - 60px); /* Fill rest of screen below header */
-  overflow-y: auto; /* Scroll if content too tall */
-  box-sizing: border-box;
-  border-left: 1px solid #e2e8f0; /* subtle border from sidebar */
+.get-started-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.get-started-btn:hover {
+  background-color: #0056b3;
+}
+
+.icon-container {
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+
+/* Hero Section */
+.hero-section {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  padding: 5% 5% 0 5%;
+  background: linear-gradient(
+    135deg,
+    rgba(230, 240, 255, 0.5),
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 240, 240, 0.5)
+  );
+}
+
+.content {
+  flex: 1;
+  max-width: 50%;
+  padding-right: 5rem;
+}
+
+.content h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.content p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--secondary-color);
+  margin-bottom: 2rem;
+}
+
+.learn-more-btn {
+  padding: 1rem 2rem;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.learn-more-btn:hover {
+  background-color: #218838;
+}
+
+.cool-logos {
+  margin-top: 4rem;
+}
+
+.cool-logos p {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.logo-images {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.logo-images img {
+  height: 30px; /* Adjust as needed */
+  opacity: 0.7;
+}
+
+/* Images Section */
+.images {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2rem;
+  padding-bottom: 5rem;
+}
+
+.image-strip {
+  width: 250px; /* Adjust the width */
+  height: 450px; /* Adjust the height */
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.image-strip img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.strip-1 {
+  transform: translateY(-50px);
+}
+
+.strip-2 {
+  z-index: 1;
+}
+
+.strip-3 {
+  transform: translateY(-80px);
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
 // Components
 import PageShell from "./components/PageShell.jsx";
@@ -55,7 +55,7 @@ function App() {
       <PageShell>
         <Routes>
           {/* Auth */}
-          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/onboarding" element={<Onboarding />} />
 
@@ -98,6 +98,9 @@ function App() {
 
           {/* Mobile */}
           <Route path="/mobile" element={<MobileLite />} />
+
+          {/* Redirect root to /login */}
+          <Route path="/" element={<Navigate to="/login" replace />} />
         </Routes>
       </PageShell>
     </Router>
