@@ -1,13 +1,7 @@
 import React from "react";
 
-const PageShell = ({ children }) => {
-  return (
-    <div className="page-shell">
-      {/* You can add a header or navigation here if needed */}
-      <main className="main-content">{children}</main>
-      {/* You can add a footer here if needed */}
-    </div>
-  );
+const Notifications = () => {
+  return <div className="notifications-page">Notifications Page</div>;
 };
 
-export default PageShell;
+export default Notifications;

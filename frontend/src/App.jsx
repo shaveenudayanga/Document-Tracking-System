@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Components
 import PageShell from "./components/PageShell.jsx";
-import Sidebar from "./components/Sidebar.jsx";
 
 // Auth Pages
 import Login from "./Pages/Auth/Login.jsx";
@@ -54,7 +53,6 @@ function App() {
   return (
     <Router>
       <PageShell>
-        <Sidebar />
         <Routes>
           {/* Auth */}
           <Route path="/" element={<Login />} />

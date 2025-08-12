@@ -1,0 +1,40 @@
+/* Container flexbox: sidebar + main content */
+.page-shell {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+  background-color: #f8fafc; /* Light gray background */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #1e293b; /* Dark blue-gray text */
+}
+
+/* Main content area next to sidebar */
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Header bar */
+.header {
+  height: 60px;
+  background-color: #2563eb; /* Blue */
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+  font-size: 1.25rem;
+  font-weight: 600;
+  user-select: none;
+}
+
+/* Content area below header */
+.content-area {
+  padding: 1.5rem;
+  background-color: white;
+  height: calc(100vh - 60px); /* Fill rest of screen below header */
+  overflow-y: auto; /* Scroll if content too tall */
+  box-sizing: border-box;
+  border-left: 1px solid #e2e8f0; /* subtle border from sidebar */
+}

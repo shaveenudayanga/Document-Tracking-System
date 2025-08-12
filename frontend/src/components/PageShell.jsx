@@ -1,13 +1,18 @@
 import React from "react";
+import Sidebar from "./Sidebar";
+import "../styles/PageShell.css";
 
-const PageShell = ({ children }) => {
+export default function PageShell({ children }) {
   return (
     <div className="page-shell">
-      {/* You can add a header or navigation here if needed */}
-      <main className="main-content">{children}</main>
-      {/* You can add a footer here if needed */}
+      <Sidebar />
+      <div className="main-content">
+        <header className="header">
+          <h1>Document Tracking System</h1>
+          {/* You can add user menu, notifications, or breadcrumbs here */}
+        </header>
+        <section className="content-area">{children}</section>
+      </div>
     </div>
   );
-};
-
-export default PageShell;
+}
