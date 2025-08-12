@@ -1,5 +1,7 @@
 import React from "react";
 
-const PipelineBuilder = () => <div>Pipeline Builder</div>;
+const PipelineBuilder = () => {
+  return <div className="pipeline-builder-page">Pipeline Builder Page</div>;
+};
 
 export default PipelineBuilder;

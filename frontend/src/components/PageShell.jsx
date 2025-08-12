@@ -1,5 +1,7 @@
 import React from "react";
 
-const PageShell = ({ children }) => <div className="page-shell">{children}</div>;
+const PageShell = () => {
+  return <div className="page-shell">PageShell</div>;
+};
 
 export default PageShell;

@@ -1,5 +1,7 @@
 import React from "react";
 
-const DocumentDetails = () => <div>Document Details</div>;
+const DocumentDetails = () => {
+  return <div className="document-details-page">Document Details Page</div>;
+};
 
 export default DocumentDetails;
