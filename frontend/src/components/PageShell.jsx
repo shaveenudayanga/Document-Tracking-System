@@ -1,9 +1,14 @@
 import React from "react";
 import Sidebar from "./Sidebar";
 import "../styles/PageShell.css";
-import { Link } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 
 const PageShell = () => {
+  const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate("/dashboard"); // Go to dashboard on New Document click
+  };
   return (
     <div className="home-container">
       <header className="header">
@@ -28,7 +33,9 @@ const PageShell = () => {
           </a>
         </nav>
         <div className="header-actions">
-          <button className="get-started-btn">New Document</button>
+          <button className="get-started-btn" onClick={handleSubmit}>
+            New Document
+          </button>
           <div className="icon-container">
             <i className="search-icon">🔍</i>
           </div>
@@ -77,6 +84,8 @@ const PageShell = () => {
           </div>
         </div>
       </main>
+      {/* Render nested routes here */}
+      <Outlet />
     </div>
   );
 };

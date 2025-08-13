@@ -9,7 +9,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Logging in with ${email}`);
+    navigate("/dashboard"); // Temporary: Go to dashboard on login click
   };
 
   const handleClose = () => {
@@ -47,7 +47,7 @@ const Login = () => {
             required
           />
 
-          <button type="submit" className="login-btn">
+          <button type="submit" className="login-btn" onClick={handleSubmit}>
             Log In
           </button>
         </form>
