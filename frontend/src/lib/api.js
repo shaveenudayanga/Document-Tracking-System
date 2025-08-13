@@ -1,54 +1,43 @@
-// Minimal API helper that reads base URL from Vite env (VITE_API_URL)
-export const API_BASE_URL = (import.meta.env.VITE_API_URL || '').replace(/\/+$/, '');
+const BASE = import.meta.env.VITE_API_URL || "/api";
 
-const withTimeout = (promise, ms) =>
-  new Promise((resolve, reject) => {
-    const t = setTimeout(() => reject(new Error('Request timeout')), ms || 15000);
-    promise.then((v) => {
-      clearTimeout(t);
-      resolve(v);
-    }).catch((e) => {
-      clearTimeout(t);
-      reject(e);
-    });
+const isAbsolute = (u) => /^https?:\/\//i.test(u);
+const trimSlashEnd = (s) => s.replace(/\/+$/, "");
+const trimSlashStart = (s) => s.replace(/^\/+/, "");
+
+function buildUrl(path) {
+  const cleanPath = trimSlashStart(path || "");
+  if (isAbsolute(BASE)) {
+    return `${trimSlashEnd(BASE)}/${cleanPath}`;
+  }
+  // Relative base like "/api"
+  const basePath = `/${trimSlashStart(BASE)}`;
+  return `${trimSlashEnd(basePath)}/${cleanPath}`;
+}
+
+async function request(method, path, body) {
+  const url = buildUrl(path);
+  const res = await fetch(url, {
+    method,
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: body ? JSON.stringify(body) : undefined,
   });
 
-export async function apiRequest(path, options = {}) {
-  const timeout = Number(import.meta.env.VITE_API_TIMEOUT_MS || 15000);
-  const withCreds = String(import.meta.env.VITE_API_WITH_CREDENTIALS || 'false').toLowerCase() === 'true';
+  const text = await res.text();
+  const data = text ? (() => { try { return JSON.parse(text); } catch { return { message: text }; } })() : null;
 
-  const url = `${API_BASE_URL}/${String(path || '').replace(/^\/+/, '')}`;
-  const headers = { 'Content-Type': 'application/json', ...(options.headers || {}) };
-
-  const resp = await withTimeout(
-    fetch(url, {
-      ...options,
-      headers,
-      credentials: withCreds ? 'include' : 'same-origin',
-    }),
-    timeout
-  );
-
-  const contentType = resp.headers.get('content-type') || '';
-  const body = contentType.includes('application/json')
-    ? await resp.json().catch(() => null)
-    : await resp.text().catch(() => null);
-
-  if (!resp.ok) {
-    const msg = (body && (body.message || body.error)) || resp.statusText || 'Request failed';
-    const err = new Error(msg);
-    err.status = resp.status;
-    err.body = body;
+  if (!res.ok) {
+    const err = new Error(data?.message || data?.error || "Request failed");
+    err.response = { status: res.status, data };
     throw err;
   }
-
-  return body;
+  return data;
 }
 
 export const api = {
-  get: (p, o = {}) => apiRequest(p, { ...o, method: 'GET' }),
-  post: (p, data, o = {}) => apiRequest(p, { ...o, method: 'POST', body: data ? JSON.stringify(data) : undefined }),
-  put: (p, data, o = {}) => apiRequest(p, { ...o, method: 'PUT', body: data ? JSON.stringify(data) : undefined }),
-  patch: (p, data, o = {}) => apiRequest(p, { ...o, method: 'PATCH', body: data ? JSON.stringify(data) : undefined }),
-  del: (p, o = {}) => apiRequest(p, { ...o, method: 'DELETE' }),
+  get: (path) => request("GET", path),
+  post: (path, body) => request("POST", path, body),
+  put: (path, body) => request("PUT", path, body),
+  patch: (path, body) => request("PATCH", path, body),
+  delete: (path) => request("DELETE", path),
 };
