@@ -71,18 +71,19 @@ body {
   font-size: 0.9rem;
 }
 
+/* Input fields */
 .login-form input {
   padding: 10px;
   border-radius: 8px;
   border: 1px solid #ccc;
-  transition: all 0.3s ease; /* Smooth border transition */
+  transition: all 0.3s ease; /* Smooth transition for border and shadow */
 }
 
 /* Input glow on focus */
 .login-form input:focus {
-  border-color: #4ba8cd;
-  box-shadow: 0 0 8px #4ba8cd;
-  outline: none;
+  border-color: #4ba8cd; /* Border color changes to blue */
+  box-shadow: 0 0 8px #4ba8cd; /* Subtle glow effect */
+  outline: none; /* Remove default outline */
 }
 
 .forgot-password {
