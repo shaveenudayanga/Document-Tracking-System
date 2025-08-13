@@ -14,7 +14,7 @@ const PageShell = () => {
       <header className="header">
         <div className="logo">
           <img
-            src="/path/to/your/logo.png"
+            src="frontend/src/assets/logoo.png"
             alt="Document Tracking System Logo"
           />
         </div>
