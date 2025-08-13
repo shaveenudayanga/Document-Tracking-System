@@ -1,22 +1,31 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // ✅ Import navigation hook
 import "../../styles/Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate(); // ✅ Initialize navigation
 
   const handleSubmit = (e) => {
     e.preventDefault();
     alert(`Logging in with ${email}`);
   };
 
+  // ✅ Close button click handler
+  const handleClose = () => {
+    navigate("/"); // Goes back to PageShell page (home route)
+  };
+
   return (
     <div className="login-container">
       <div className="login-box animate-slide-in">
-        <div className="cross">X</div>
-        <br />
-        <h2 className="login-title"> DOCUTRACE</h2>
-        <p></p>
+        {/* Close Button */}
+        <span className="close-btn" onClick={handleClose}>
+          ×
+        </span>
+
+        <h2 className="login-title">DOCUTRACE</h2>
         <p className="login-subtitle">
           Securely manage and track your documents
         </p>
