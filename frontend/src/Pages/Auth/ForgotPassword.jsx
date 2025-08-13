@@ -4,7 +4,11 @@ const ForgotPassword = () => {
   return (
     <div className="forgot-password-page">
       <h1>Forgot Password Page</h1>
-      {/* Add your forgot password form here */}
+      <form className="forgot-password-form">
+        <label htmlFor="email">Email Address:</label>
+        <input type="email" id="email" name="email" required />
+        <button type="submit">Reset Password</button>
+      </form>
     </div>
   );
 };
