@@ -14,19 +14,19 @@ services:
       - pgdata:/var/lib/postgresql/data
 
   user-service:
-    build: .
+    build: ./user-service
     container_name: user_service
     depends_on:
       - db
     env_file:
-      - .env
+      - ./user-service/.env
     environment:
       SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       JWT_SECRET: ${JWT_SECRET}
     ports:
-      - "8080:8080"
+      - "70:8080"
     # Healthcheck could be added for readiness
 
 volumes:
