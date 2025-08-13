@@ -58,30 +58,30 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Auth - no PageShell */}
+        {/* Login and Auth */}
         <Route path="/login" element={<Login />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/onboarding" element={<Onboarding />} />
-        {/* Redirect root to /login */}
-        <Route path="/" element={<Navigate to="/login" replace />} />
-        {/* Main app - with PageShell */}
-        <Route element={<PageShell />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/documents" element={<DocumentList />} />
-          <Route path="/documents/:id" element={<DocumentDetails />} />
-          <Route path="/pipelines" element={<PipelineList />} />
-          <Route path="/pipelines/builder" element={<PipelineBuilder />} />
-          <Route path="/handover/queue" element={<HandoverQueue />} />
-          <Route path="/handover/verify" element={<QRVerification />} />
-          <Route path="/handover/history" element={<HandoverHistory />} />
-          <Route path="/departments" element={<DepartmentManager />} />
-          <Route path="/notifications" element={<Notifications />} />
-          <Route path="/audit" element={<AuditLog />} />
-          <Route path="/profile" element={<UserProfile />} />
-          <Route path="/settings" element={<SystemSettings />} />
-          <Route path="/help" element={<HelpCenter />} />
-          <Route path="/bulk" element={<BulkOperations />} />
-          <Route path="/mobile" element={<MobileLite />} />
+        {/* Main app - with PageShell as layout for all other routes */}
+        <Route path="/" element={<PageShell />}>
+          {/* Default child route for /, e.g. Dashboard */}
+          <Route index element={<Dashboard />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="documents" element={<DocumentList />} />
+          <Route path="documents/:id" element={<DocumentDetails />} />
+          <Route path="pipelines" element={<PipelineList />} />
+          <Route path="pipelines/builder" element={<PipelineBuilder />} />
+          <Route path="handover/queue" element={<HandoverQueue />} />
+          <Route path="handover/verify" element={<QRVerification />} />
+          <Route path="handover/history" element={<HandoverHistory />} />
+          <Route path="departments" element={<DepartmentManager />} />
+          <Route path="notifications" element={<Notifications />} />
+          <Route path="audit" element={<AuditLog />} />
+          <Route path="profile" element={<UserProfile />} />
+          <Route path="settings" element={<SystemSettings />} />
+          <Route path="help" element={<HelpCenter />} />
+          <Route path="bulk" element={<BulkOperations />} />
+          <Route path="mobile" element={<MobileLite />} />
         </Route>
       </Routes>
     </Router>
