@@ -1,0 +1,121 @@
+.signup-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #89f7fe, #66a6ff);
+  animation: fadeInBg 1s ease-in-out;
+}
+
+.signup-box {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2.5rem;
+  border-radius: 15px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  width: 350px;
+  position: relative;
+  animation: slideUp 0.6s ease-out;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.2s ease;
+}
+
+.close-btn:hover {
+  transform: rotate(90deg);
+}
+
+.signup-title {
+  text-align: center;
+  font-size: 1.8rem;
+  color: white;
+  margin-bottom: 0.3rem;
+}
+
+.signup-subtitle {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #f4f4f4;
+  margin-bottom: 1.5rem;
+}
+
+.signup-form label {
+  color: white;
+  font-size: 0.85rem;
+}
+
+.signup-form input {
+  width: 100%;
+  padding: 0.8rem;
+  margin: 0.4rem 0 1rem;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+  outline: none;
+  transition: background 0.3s ease;
+}
+
+.signup-form input:focus {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.signup-btn {
+  width: 100%;
+  padding: 0.8rem;
+  background: linear-gradient(90deg, #f7971e, #ffd200);
+  border: none;
+  color: white;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.signup-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 210, 0, 0.5);
+}
+
+.signup-footer {
+  text-align: center;
+  margin-top: 1rem;
+  color: white;
+}
+
+.signup-footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.signup-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Animations */
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInBg {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
