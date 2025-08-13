@@ -11,48 +11,48 @@ import PageShell from "./components/PageShell.jsx";
 
 // Auth Pages
 import Login from "./Pages/Auth/Login.jsx";
-import ForgotPassword from "./pages/Auth/ForgotPassword.jsx";
-import Onboarding from "./pages/Auth/Onboarding.jsx";
+import ForgotPassword from "./Pages/Auth/ForgotPassword.jsx";
+import Onboarding from "./Pages/Auth/Onboarding.jsx";
 
 // Dashboard
-import Dashboard from "./pages/Dashboard/Dashboard.jsx";
+import Dashboard from "./Pages/Dashboard/Dashboard.jsx";
 
 // Documents
-import DocumentList from "./pages/Documents/DocumentList.jsx";
-import DocumentDetails from "./pages/Documents/DocumentDetails.jsx";
+import DocumentList from "./Pages/Documents/DocumentList.jsx";
+import DocumentDetails from "./Pages/Documents/DocumentDetails.jsx";
 
 // Pipelines
-import PipelineList from "./pages/Pipelines/PipelineList.jsx";
-import PipelineBuilder from "./pages/Pipelines/PipelineBuilder.jsx";
+import PipelineList from "./Pages/Pipelines/PipelineList.jsx";
+import PipelineBuilder from "./Pages/Pipelines/PipelineBuilder.jsx";
 
 // Handover
 import HandoverQueue from "./Pages/Handover/HandoverQueue.jsx";
-import QRVerification from "./pages/Handover/QRVerification.jsx";
-import HandoverHistory from "./pages/Handover/HandoverHistory.jsx";
+import QRVerification from "./Pages/Handover/QRVerification.jsx";
+import HandoverHistory from "./Pages/Handover/HandoverHistory.jsx";
 
 // Departments
-import DepartmentManager from "./pages/Departments/DepartmentManager.jsx";
+import DepartmentManager from "./Pages/Departments/DepartmentManager.jsx";
 
 // Notifications
-import Notifications from "./pages/Notifications/Notifications.jsx";
+import Notifications from "./Pages/Notifications/Notifications.jsx";
 
 // Audit
-import AuditLog from "./pages/Audit/AuditLog.jsx";
+import AuditLog from "./Pages/Audit/AuditLog.jsx";
 
 // Profile
-import UserProfile from "./pages/Profile/UserProfile.jsx";
+import UserProfile from "./Pages/Profile/UserProfile.jsx";
 
 // Settings
-import SystemSettings from "./pages/Settings/SystemSettings.jsx";
+import SystemSettings from "./Pages/Settings/SystemSettings.jsx";
 
 // Help
-import HelpCenter from "./pages/Help/HelpCenter.jsx";
+import HelpCenter from "./Pages/Help/HelpCenter.jsx";
 
 // Bulk
-import BulkOperations from "./pages/Bulk/BulkOperations.jsx";
+import BulkOperations from "./Pages/Bulk/BulkOperations.jsx";
 
 // Mobile
-import MobileLite from "./pages/MobileLite/MobileLite.jsx";
+import MobileLite from "./Pages/MobileLite/MobileLite.jsx";
 
 function App() {
   return (
