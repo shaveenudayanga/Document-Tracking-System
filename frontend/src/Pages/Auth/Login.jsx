@@ -15,12 +15,11 @@ const Login = () => {
     setError("");
     setLoading(true);
     try {
-      // Backend expects /api/auth/login; ensure VITE_API_URL includes /api
       const data = await api.post("auth/login", { email, password });
-      // Store tokens if returned
       if (data && (data.accessToken || data.token)) {
         localStorage.setItem("accessToken", data.accessToken || data.token);
-        if (data.refreshToken) localStorage.setItem("refreshToken", data.refreshToken);
+        if (data.refreshToken)
+          localStorage.setItem("refreshToken", data.refreshToken);
       }
       navigate("/dashboard");
     } catch (err) {
@@ -35,45 +34,66 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-box animate-fade-in">
-        <span className="close-btn" onClick={handleClose}>
-          ×
-        </span>
+    <div className="login-wrapper">
+      <div className="login-card">
+        {/* Left Side Form */}
+        <div className="login-form-section">
+          <span className="close-btn" onClick={handleClose}>
+            ×
+          </span>
+          <h2 className="login-title">Log In</h2>
+          <p className="login-subtitle">
+            Welcome back! Please enter your details
+          </p>
 
-        <h2 className="login-title">DOCUTRACE</h2>
-        <p className="login-subtitle">Securely manage and track your documents</p>
+          {error && <div className="error-message">{error}</div>}
 
-        {/* Error message */}
-        {error && <div className="error-message">{error}</div>}
+          <form className="login-form" onSubmit={handleSubmit}>
+            <label>Email</label>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
 
-        <form className="login-form" onSubmit={handleSubmit}>
-          <label>Email</label>
-          <input
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+            <label>Password</label>
+            <input
+              type="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
 
-          <label>Password</label>
-          <input
-            type="password"
-            placeholder="Enter your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <button type="submit" className="login-btn" disabled={loading}>
-            {loading ? "Logging in..." : "Log In"}
-          </button>
-        </form>
+            <a className="forgot-password" href="/forgot-password">
+              Forgot password?
+            </a>
 
-        <div className="login-footer">
-          <a href="/forgot-password">Forgot Password?</a>
-          <span> | </span>
-          <a href="/onboarding">Sign Up</a>
+            <button type="submit" className="login-btn" disabled={loading}>
+              {loading ? "Logging in..." : "Log In"}
+            </button>
+          </form>
+
+          <div className="divider">
+            <span>Or Continue With</span>
+          </div>
+
+          <div className="social-login">
+            <button className="google-btn">Google</button>
+            <button className="facebook-btn">Facebook</button>
+          </div>
+
+          <p className="signup-link">
+            Don’t have an account? <a href="/onboarding">Sign up</a>
+          </p>
+        </div>
+
+        {/* Right Side Image */}
+        <div className="login-image-section">
+          <div className="gradient-overlay"></div>
+          <img src="/images/login-model.jpg" alt="Login Visual" />
         </div>
       </div>
     </div>
