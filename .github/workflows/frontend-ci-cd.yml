@@ -63,22 +63,28 @@ jobs:
       - name: Set up Kind cluster
         uses: helm/kind-action@v1.9.0
 
-      - name: Update image tag in k8s manifests
-        run: |
-          sed -i "s|image: .*/docutrace-frontend:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/docutrace-frontend:${IMAGE_TAG}|g" frontend/k8s/deployment.yaml
-
       - name: Deploy to Kind
         run: |
           kubectl apply -f frontend/k8s/
 
-      - name: Wait for frontend pod to be ready
+      - name: Set image on deployment
         run: |
-          kubectl wait --for=condition=ready pod -l app=frontend -n default --timeout=120s || {
-            echo 'Pod did not become ready. Printing pod status and logs:';
-            kubectl get pods -l app=frontend -n default;
-            kubectl describe pod -l app=frontend -n default;
-            kubectl logs $(kubectl get pods -l app=frontend -n default -o jsonpath='{.items[0].metadata.name}');
-            exit 1;
+          kubectl set image deployment/frontend frontend=${{ secrets.DOCKERHUB_USERNAME }}/docutrace-frontend:${{ github.sha }} --namespace default
+          kubectl rollout status deployment/frontend --timeout=120s
+
+      - name: Wait for frontend deployment rollout
+        run: |
+          set -e
+          kubectl rollout status deployment/frontend --timeout=180s || {
+            echo 'Deployment did not complete. Printing diagnostics:'
+            kubectl get deploy/frontend
+            kubectl describe deploy/frontend
+            kubectl get pods -l app=frontend -o wide
+            # Show logs of the newest pod if available
+            POD=$(kubectl get pods -l app=frontend -o jsonpath='{.items[0].metadata.name}')
+            echo "--- Logs for $POD ---"
+            kubectl logs "$POD" || true
+            exit 1
           }
 
       - name: Port-forward frontend

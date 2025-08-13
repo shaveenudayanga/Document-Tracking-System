@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: docutrace-frontend:latest
+          image: ${{ secrets.DOCKERHUB_USERNAME}}/docutrace-frontend:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
           resources:
