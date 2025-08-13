@@ -7,14 +7,20 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your login logic here
     alert(`Logging in with ${email}`);
   };
 
   return (
     <div className="login-container">
-      <div className="login-box">
-        <h2 className="login-title">Document Tracking System</h2>
+      <div className="login-box animate-slide-in">
+        <div className="cross">X</div>
+        <br />
+        <h2 className="login-title"> DOCUTRACE</h2>
+        <p></p>
+        <p className="login-subtitle">
+          Securely manage and track your documents
+        </p>
+
         <form className="login-form" onSubmit={handleSubmit}>
           <label htmlFor="email">Email</label>
           <input
@@ -40,6 +46,7 @@ const Login = () => {
             Log In
           </button>
         </form>
+
         <div className="login-footer">
           <a href="/forgot-password">Forgot Password?</a>
           <span> | </span>
