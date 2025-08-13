@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
 // Components
 import PageShell from "./components/PageShell.jsx";
@@ -52,57 +57,33 @@ import MobileLite from "./pages/MobileLite/MobileLite.jsx";
 function App() {
   return (
     <Router>
-      <PageShell>
-        <Routes>
-          {/* Auth */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/onboarding" element={<Onboarding />} />
-
-          {/* Dashboard */}
+      <Routes>
+        {/* Auth - no PageShell */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/onboarding" element={<Onboarding />} />
+        {/* Redirect root to /login */}
+        <Route path="/" element={<Navigate to="/login" replace />} />
+        {/* Main app - with PageShell */}
+        <Route element={<PageShell />}>
           <Route path="/dashboard" element={<Dashboard />} />
-
-          {/* Documents */}
           <Route path="/documents" element={<DocumentList />} />
           <Route path="/documents/:id" element={<DocumentDetails />} />
-
-          {/* Pipelines */}
           <Route path="/pipelines" element={<PipelineList />} />
           <Route path="/pipelines/builder" element={<PipelineBuilder />} />
-
-          {/* Handover */}
           <Route path="/handover/queue" element={<HandoverQueue />} />
           <Route path="/handover/verify" element={<QRVerification />} />
           <Route path="/handover/history" element={<HandoverHistory />} />
-
-          {/* Departments */}
           <Route path="/departments" element={<DepartmentManager />} />
-
-          {/* Notifications */}
           <Route path="/notifications" element={<Notifications />} />
-
-          {/* Audit */}
           <Route path="/audit" element={<AuditLog />} />
-
-          {/* Profile */}
           <Route path="/profile" element={<UserProfile />} />
-
-          {/* Settings */}
           <Route path="/settings" element={<SystemSettings />} />
-
-          {/* Help */}
           <Route path="/help" element={<HelpCenter />} />
-
-          {/* Bulk */}
           <Route path="/bulk" element={<BulkOperations />} />
-
-          {/* Mobile */}
           <Route path="/mobile" element={<MobileLite />} />
-
-          {/* Redirect root to /login */}
-          <Route path="/" element={<Navigate to="/login" replace />} />
-        </Routes>
-      </PageShell>
+        </Route>
+      </Routes>
     </Router>
   );
 }
