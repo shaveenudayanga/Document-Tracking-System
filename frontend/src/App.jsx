@@ -65,7 +65,7 @@ function App() {
         {/* Main app - with PageShell as layout for all other routes */}
         <Route path="/" element={<PageShell />}>
           {/* Default child route for /, e.g. Dashboard */}
-          <Route index element={<Dashboard />} />
+
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="documents" element={<DocumentList />} />
           <Route path="documents/:id" element={<DocumentDetails />} />

@@ -1,48 +1,207 @@
+/* Dashboard.css - Spacious & Calm with Hover Dark Accent */
+
+/* Global Styles */
 body {
   margin: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f6f8;
+  font-family: "Segoe UI", sans-serif;
+  background: #f7f9fc;
 }
 
-.dashboard-page {
-  padding: 40px 20px;
+.dashboard-wrapper {
+  display: flex;
+  min-height: 100vh;
+  background: #f7f9fc;
 }
 
-.dashboard-page h1 {
-  text-align: center;
-  margin-bottom: 30px;
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background: #e8f0f8;
   color: #333;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-right: 1px solid #d1dde8;
 }
 
-.dashboard-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 25px;
-  max-width: 1200px;
-  margin: 0 auto;
+.sidebar h2 {
+  margin-bottom: 40px;
+  font-size: 1.6rem;
+  color: #4ba8cd;
 }
 
-.dashboard-card {
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
-  color: white;
-  padding: 25px 20px;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 20px 0;
+  cursor: pointer;
+  padding: 10px 12px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.sidebar li:hover {
+  background: #cce4f5; /* slightly darker pastel */
+  color: #2575fc;
+}
+
+/* Main Content */
+.dashboard-main {
+  flex: 1;
+  padding: 40px 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px; /* spacing between sections */
+}
+
+/* Header */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-header h1 {
+  color: #2575fc;
+  font-size: 2rem;
+}
+
+.dashboard-header span {
+  background: #d9f0fb;
+  color: #2575fc;
+  padding: 6px 14px;
+  border-radius: 14px;
+  font-size: 0.9rem;
+}
+
+/* Metrics Cards / User Material Boxes */
+.metrics-cards {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.metric-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 18px;
+  flex: 1 1 250px;
   text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  transition: all 0.25s ease;
 }
 
-.dashboard-card h2 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+.metric-card:hover {
+  background: #c0d9eb; /* soft dark color on hover */
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
 }
 
-.dashboard-card p {
+.metric-card h3 {
+  margin: 0;
+  font-size: 1.6rem;
+  color: #2575fc;
+}
+
+.metric-card p {
+  margin: 10px 0 0;
+  color: #555;
   font-size: 1rem;
-  font-weight: 500;
 }
 
-.dashboard-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+/* Tables */
+.table-container {
+  margin-top: 20px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+th,
+td {
+  padding: 14px 18px;
+  text-align: left;
+}
+
+th {
+  background: #d9f0fb;
+  color: #2575fc;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+tr:nth-child(even) td {
+  background: #f1f7fc;
+}
+
+tr:hover td {
+  background: #d0e8f8;
+  transition: all 0.2s ease;
+}
+
+/* Buttons */
+button {
+  padding: 8px 16px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #4ba8cd;
+  color: white;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background: #2575fc;
+  transform: translateY(-2px);
+}
+
+/* Chart Placeholder */
+.chart-placeholder {
+  height: 250px;
+  background: #ffffff;
+  border-radius: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #2575fc;
+  font-weight: 500;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  margin-top: 20px;
+}
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+  .dashboard-wrapper {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+    border-right: none;
+    border-bottom: 1px solid #d1dde8;
+  }
+
+  .dashboard-main {
+    padding: 30px 20px;
+  }
+
+  .metrics-cards {
+    flex-direction: column;
+    gap: 25px;
+  }
 }
