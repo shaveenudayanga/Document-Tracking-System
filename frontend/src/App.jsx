@@ -54,6 +54,29 @@ import BulkOperations from "./Pages/Bulk/BulkOperations.jsx";
 // Mobile
 import MobileLite from "./Pages/MobileLite/MobileLite.jsx";
 
+// Simple home landing component for the root index
+const HomeLanding = () => (
+  <div className="hero-section">
+    <div className="content">
+      <h1>Effortlessly Track Your Documents</h1>
+      <p>
+        Streamline your workflow with our intuitive and powerful document
+        management solution. Keep track of approvals, versions, and deadlines
+        with ease.
+      </p>
+      <button className="learn-more-btn">Explore Features</button>
+      <div className="cool-logos">
+        <p>Integrates With:</p>
+        <div className="logo-images">
+          <img src="/d1.jpg" alt="Slack" />
+          <img src="/google-drive-logo.png" alt="Google Drive" />
+          <img src="/microsoft-365-logo.png" alt="Microsoft 365" />
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 function App() {
   return (
     <Router>
@@ -65,7 +88,7 @@ function App() {
         {/* Main app - with PageShell as layout for all other routes */}
         <Route path="/" element={<PageShell />}>
           {/* Default child route for /, e.g. Dashboard */}
-
+          <Route index element={<Dashboard />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="documents" element={<DocumentList />} />
           <Route path="documents/:id" element={<DocumentDetails />} />
@@ -83,6 +106,8 @@ function App() {
           <Route path="bulk" element={<BulkOperations />} />
           <Route path="mobile" element={<MobileLite />} />
         </Route>
+        {/* Fallback */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
   );
