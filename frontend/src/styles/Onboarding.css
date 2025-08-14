@@ -1,0 +1,170 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #f3ecff;
+}
+
+.signup-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background: linear-gradient(135deg, #e5e9f0, #4ba8cd, #e5e9f0);
+}
+
+.signup-card {
+  display: flex;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 900px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Form section */
+.signup-form-section {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+.role-select {
+  width: 100%;
+  padding: 0.8rem 0.8rem 0.8rem 1rem;
+  margin: 0.4rem 0 1rem;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+  outline: none;
+  transition: all 0.3s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 14px;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  font-weight: 500;
+}
+
+.role-select:focus {
+  background-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+  border-left: 3px solid #ffd200;
+}
+
+.role-select:hover {
+  background-color: rgba(123, 207, 255, 0.35);
+  cursor: pointer;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.role-select option {
+  background-color: rgb(255, 255, 255, 0.35);
+  color: rgb(14, 14, 14);
+  padding: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.close-btn {
+  font-size: 20px;
+  cursor: pointer;
+  color: #999;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.signup-title {
+  color: #6a11cb;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.signup-subtitle {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 25px;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.signup-form label {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.signup-form input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+}
+
+.signup-form input:focus {
+  border-color: #4ba8cd;
+  box-shadow: 0 0 8px #4ba8cd;
+  outline: none;
+}
+
+.signup-btn {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.signup-btn:hover {
+  filter: brightness(1.1);
+}
+
+.signup-footer {
+  font-size: 0.85rem;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.signup-footer a {
+  color: #6a11cb;
+}
+
+/* Image section */
+.signup-image-section {
+  flex: 1;
+  position: relative;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-image-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom right,
+    rgba(106, 17, 203, 0.6),
+    rgba(37, 117, 252, 0.6)
+  );
+}
